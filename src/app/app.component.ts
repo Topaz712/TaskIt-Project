@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './shared/user.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'TaskIt-Project';
+  user: User[] = [
+    new User('https://images.pexels.com/photos/15272229/pexels-photo-15272229/free-photo-of-black-and-white-photo-of-mountains-and-highway.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load', 'Topaz@taskit.com')
+    ];
 }

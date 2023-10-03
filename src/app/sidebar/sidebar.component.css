@@ -1,0 +1,48 @@
+.menu-left-side {
+  margin: 0;
+  padding: 0;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  width: 244px;
+  height: 1117px;
+  border: 0px, 1px, 0px, 0px;
+  border-right: 1px solid #D2D2D2;
+  background-color: #FFFFFF;
+}
+
+.logo {
+  margin-top: 50px;
+  margin-left: 15px;
+  width: 142px;
+  height: 34px;
+}
+
+h1 {
+  font-weight: bolder;
+}
+.taskWord {
+  color: #5cb85c;
+}
+
+.btn {
+  position: relative;
+  width: 200px;
+  height: 48px;
+  top: 48px;
+  left: 21px;
+  padding: 15px, 0px, 15px, 0px;
+  border-radius: 12px;
+}
+
+.user {
+  position: relative;
+  width: Fixed (244px);
+  height: Hug (62px);
+  top: 1055px;
+  padding: 11px, 16px, 11px, 16px;
+  border: 1px, 0px, 0px, 0px;
+  gap: 10px;
+
+}
