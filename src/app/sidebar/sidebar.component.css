@@ -6,7 +6,7 @@
   bottom:0;
   left:0;
   width: 244px;
-  height: 1117px;
+  height: 1200px;
   border: 0px, 1px, 0px, 0px;
   border-right: 1px solid #D2D2D2;
   background-color: #FFFFFF;
@@ -45,4 +45,25 @@ h1 {
   border: 1px, 0px, 0px, 0px;
   gap: 10px;
 
+}
+
+.list-group-item {
+  position: relative;
+  display: flex;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.logoutIcon, p {
+  margin-left: 5px;
+}
+
+.userImg {
+  border-radius: 50%;
+  height: 100px;
+  object-fit: cover;
 }
