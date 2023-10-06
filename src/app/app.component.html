@@ -1,7 +1,11 @@
-<app-header></app-header>
-<app-sidebar [user]="user"></app-sidebar>
-  <div class="container">
-    <div class="row">
-      <app-tasks></app-tasks>
+<div class="row">
+  <div class="col-md-3">
+    <app-sidebar [user]="user"></app-sidebar>
+      <div class="col-md-9">
+        <app-header></app-header>
+        <div class="container">
+          <app-task-list></app-task-list>
+        </div>
+      </div>
     </div>
   </div>

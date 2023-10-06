@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Tasks } from '../tasks.model';
 
 @Component({
   selector: 'app-task-list',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent {
-
+  @Input() tasks: Tasks[] = [
+    new Tasks('Fix TaskIt', new Date(), 'High', 'Incomplete'),
+    new Tasks('Finish videos', new Date(), 'High', 'Incomplete'),
+  ];
 }

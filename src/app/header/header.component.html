@@ -1,34 +1,33 @@
-<div class="container">
-    <h1 class="header ">
-      <a href="#">Task List</a>
-    </h1>
-  <div>
-    <p class="fw-bold">Filters:</p>
-    <div class="filters-form">
-      <span>
-        <select class="form-select">
+<div class="row">
+<div class="col-md-9">
+  <h1 class="header">
+    <a href="#">Task List</a>
+  </h1>
+  <div class="d-flex align-items-center filters-row">
+    <p class="fw-bold me-2">Filters:</p>
+    <div class="filters-form d-flex align-items-center">
+        <select class="form-select me-2">
           <option selected>Status</option>
           <option value="to-do">To Do</option>
           <option value="in-progress">In Progress</option>
           <option value="complete">Complete</option>
         </select>
-        <select class="date-select">
+        <select class="date-select me-2">
           <option selected>Date</option>
-          <option value="1">To Do</option>
-          <option value="2">In Progress</option>
-          <option value="3">Complete</option>
+          <option value="">Last 30 Days</option>
+          <option value="">Six Months ago</option>
+          <option value="">Custom</option>
         </select>
-        <select class="priority-select">
+        <select class="priority-select me-2">
           <option selected>Priority</option>
-          <option value="1">Low</option>
-          <option value="2">Medium</option>
-          <option value="3">High</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
         </select>
         <button class="btn bnt-add-task btn-success">Add New Task</button>
-        </span>
-    </div>
+      </div>
     <div>
-
-    </div>
   </div>
-
+</div>
+</div>
+</div>
