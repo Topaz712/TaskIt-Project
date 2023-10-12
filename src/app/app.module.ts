@@ -8,6 +8,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TaskFormComponent } from './tasks/task-form/task-form.component';
+import { DropdownDirective } from './shared/dropdown.directive';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { TaskFormComponent } from './tasks/task-form/task-form.component';
     TaskListComponent,
     TaskDetailComponent,
     TaskFormComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule

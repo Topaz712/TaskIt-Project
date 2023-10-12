@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./task-form.component.css']
 })
 export class TaskFormComponent {
+  isModalVisible = false;
 
+  toggleModal() {
+    this.isModalVisible = !this.isModalVisible
+  }
 }

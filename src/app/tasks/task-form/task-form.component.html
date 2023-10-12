@@ -1,1 +1,21 @@
-<p>task-form works!</p>
+<div class="task-modal" >
+  <div class="task-content">
+    Add a New Task
+    <input type="text" placeholder="Title">
+    <textarea class="form-control" placeholder="Description" rows="5">
+    <input type="date" id="date" placeholder="Due Date">
+    <select class="form-control" id="priority" aria-placeholder="Priority">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+    <select class="form-control" id="status" aria-placeholder="Status">
+      <option value="toDo">To Do</option>
+      <option value="inProgress">In Progress</option>
+      <option value="status">Completed</option>
+    </select>
+    <button type="button" class="btn btn-dark">Cancel</button>
+    <button type="submit" class="btn btn-success">Create</button>
+  </div>
+</div>
+

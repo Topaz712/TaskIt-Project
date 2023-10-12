@@ -15,8 +15,16 @@
         <th>{{ task.title }}</th>
         <th>{{ task.dueDate | date: 'MM-dd-yyyy'}}</th>
         <th>{{ task.priority }}</th>
-        <th>{{ task.status }}</th>
-        <th><img src="assets/icons/eye.svg/"></th>
+        <th class="open">{{ task.status }} <span><a><img src="assets/icons/caret.svg"></a></span></th>
+        <th
+        style="width: 89.8px;
+        height: 17.8px;
+        top: 58px;
+        left: 1017px;">
+          <img src="assets/icons/eye.svg/" style="">
+          <img src="assets/icons/edit.svg">
+          <img src="assets/icons/delete.svg">
+        </th>
       </tr>
     </tbody>
   </table>
