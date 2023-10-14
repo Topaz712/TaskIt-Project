@@ -4,14 +4,15 @@
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a New Task</h1>
         <input type="text" placeholder="Title">
-        <textarea class="form-control" placeholder="Description" rows="5"></textarea>
         <input type="date" id="date" placeholder="Due Date">
-        <select class="form-control" id="priority" aria-placeholder="Priority">
+        <select class="form-control" id="priority">
+          <option value="" selected disabled>Priority</option>
           <option value="low">Low</option>
           <option value="medium">Medium</option>
           <option value="high">High</option>
         </select>
-        <select class="form-control" id="status" aria-placeholder="Status">
+        <select class="form-control" id="status">
+          <option value="" selected disabled>Status</option>
           <option value="toDo">To Do</option>
           <option value="inProgress">In Progress</option>
           <option value="status">Completed</option>
