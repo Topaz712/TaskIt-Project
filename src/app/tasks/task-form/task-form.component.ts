@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-task-form',
@@ -8,15 +8,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class TaskFormComponent {
   @Output() toggleModal: EventEmitter<void> = new EventEmitter<void>();
 
-  isModalVisible = false;
-
-  openModal() {
-    this.isModalVisible = true;
-    this.toggleModal.emit();
-  }
+  @Input() isModalVisible = false;
 
   closeModal() {
-    this.isModalVisible = false;
     this.toggleModal.emit();
   }
 }

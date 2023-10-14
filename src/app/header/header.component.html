@@ -22,9 +22,10 @@
           <option value="medium">Medium</option>
           <option value="high">High</option>
         </select>
-        <button class="btn bnt-add-task btn-success">Add New Task</button>
+        <button class="btn bnt-add-task btn-success" (click)="showModal = true;">Add New Task</button>
       </div>
     <div>
   </div>
 </div>
 
+<app-task-form [isModalVisible]="showModal" (toggleModal)="showModal = false"></app-task-form>

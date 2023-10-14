@@ -10,6 +10,8 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   toggleModal: EventEmitter<void> = new EventEmitter<void>();
 
+  showModal: boolean = false;
+
   constructor() { }
 
   ngOnInit() {}
