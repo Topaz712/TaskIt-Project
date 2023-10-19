@@ -3,22 +3,39 @@
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="staticBackdropLabel">Add a New Task</h1>
-        <input type="text" placeholder="Title">
-        <input type="date" id="date" placeholder="Due Date">
-        <select class="form-control" id="priority">
+        <input
+          [(ngModel)]="title"
+          type="text"
+          placeholder="Title">
+        <input
+          [(ngModel)]="date"
+          type="date" id="date" placeholder="Due Date">
+        <select
+          [(ngModel)]="priority"
+          class="form-control" id="priority">
           <option value="" selected disabled>Priority</option>
           <option value="low">Low</option>
           <option value="medium">Medium</option>
           <option value="high">High</option>
         </select>
-        <select class="form-control" id="status">
+        <select
+          [(ngModel)]="status"
+          class="form-control" id="status">
           <option value="" selected disabled>Status</option>
           <option value="toDo">To Do</option>
           <option value="inProgress">In Progress</option>
           <option value="status">Completed</option>
         </select>
-        <button type="button" class="btn btn-dark" (click)="closeModal()">Cancel</button>
-        <button type="submit" class="btn btn-success">Create</button>
+        <button
+          type="submit"
+          class="btn btn-dark"
+          (click)="closeModal()">Cancel
+        </button>
+        <button
+          type="submit"
+          class="btn btn-success"
+          (click)="onCreate()">Create
+        </button>
       </div>
     </div>
   </div>

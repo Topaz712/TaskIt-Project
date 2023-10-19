@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 import { Task } from './tasks.model';
 
@@ -6,7 +6,9 @@ import { Task } from './tasks.model';
   providedIn: 'root'
 })
 export class TasksService {
-  tasks: Task[] = [
+  addTask = new EventEmitter<Task[]>();
+
+  private tasks: Task[] = [
     new Task('Fix TaskIt', new Date(), 'High', 'Incomplete'),
     new Task('Finish videos', new Date(), 'High', 'Incomplete'),
   ];
@@ -15,5 +17,10 @@ export class TasksService {
 
   getTasks() {
     return this.tasks.slice();
+  }
+
+  createTask(task: Task) {
+    this.tasks.push(task);
+    this.addTask.emit(this.tasks.slice());
   }
 }
