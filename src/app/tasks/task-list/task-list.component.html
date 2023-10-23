@@ -15,19 +15,43 @@
         <th>{{ task.title }}</th>
         <th>{{ task.date | date: 'MM-dd-yyyy'}}</th>
         <th>{{ task.priority }}</th>
-        <th class="open">{{ task.status }} <span><a><img src="assets/icons/caret.svg"></a></span></th>
         <th
-        style="width: 89.8px;
-        height: 17.8px;
-        top: 58px;
-        left: 1017px;">
-          <img src="assets/icons/eye.svg/">
-          <img src="assets/icons/edit.svg">
-          <img src="assets/icons/delete.svg">
+          class="open">{{ task.status }}
+          <span>
+            <a>
+              <img src="assets/icons/caret.svg">
+            </a>
+          </span>
         </th>
-      </tr>
-    </tbody>
-  </table>
+        <th
+          style="width: 89.8px;
+          height: 17.8px;
+          top: 58px;
+          left: 1017px;">
+        <ul
+          style="list-style-type: none;
+          display: flex;
+          justify-content: space-evenly;">
+          <li>
+            <a href="">
+              <img src="assets/icons/eye.svg/">
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="assets/icons/edit.svg">
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="assets/icons/delete.svg">
+            </a>
+          </li>
+        </ul>
+      </th>
+    </tr>
+  </tbody>
+</table>
 </div>
 </div>
 
