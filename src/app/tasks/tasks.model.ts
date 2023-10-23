@@ -1,7 +1,7 @@
 export class Task {
   constructor(
     public title: string,
-    public dueDate: Date,
+    public date: Date,
     public priority: string,
     public status: string) {
 
