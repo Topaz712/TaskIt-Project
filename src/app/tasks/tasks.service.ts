@@ -23,4 +23,8 @@ export class TasksService {
     this.tasks.push(task);
     this.addTask.emit(this.tasks.slice());
   }
+
+  deleteTask(task: Task) {
+    this.tasks.splice();
+  }
 }
