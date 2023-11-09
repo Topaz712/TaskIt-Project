@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../tasks.model';
 import { TasksService } from '../tasks.service';
-import { Router } from '@angular/router';
-
+import { FormGroup } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 
 @Component({
@@ -12,10 +12,12 @@ import { Router } from '@angular/router';
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
+  taskForm: FormGroup;
 
   constructor(
     private tasksService: TasksService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.tasks = this.tasksService.getTasks();
@@ -25,8 +27,15 @@ export class TaskListComponent implements OnInit {
       }
     );
   }
+
+  onEdit() {
+    this.router.navigate(['tasks',':id/edit'], {
+      relativeTo: this.route, queryParamsHandling: 'preserve'
+    });
+  }
+
   onRemoveTask(taskId: number) {
-    this.tasksService.delete
+    this.tasksService.deleteTask;
     this.router.navigate(['tasks']);
   }
 
