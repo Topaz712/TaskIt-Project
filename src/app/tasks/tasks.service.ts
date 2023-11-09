@@ -25,6 +25,6 @@ export class TasksService {
   }
 
   deleteTask(task: Task) {
-    this.tasks.splice();
+    this.tasks.splice(0, 1);
   }
 }

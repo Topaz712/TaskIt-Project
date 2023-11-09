@@ -13,6 +13,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
 import { TasksService } from './tasks/tasks.service';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [TasksService],
   bootstrap: [AppComponent]
