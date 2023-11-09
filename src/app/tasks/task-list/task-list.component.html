@@ -39,7 +39,9 @@
           </li>
           <li>
             <a
-              href=""
+              [routerLink]="['/tasks/:id/edit', tasks.title, tasks.date, tasks.priority, tasks.status]"
+              href="#"
+              class="list-group-item"
               (click)="onEdit()">
               <img src="assets/icons/edit.svg">
             </a>
