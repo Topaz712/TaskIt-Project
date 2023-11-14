@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 
@@ -12,8 +13,8 @@ import { TaskFormComponent } from './tasks/task-form/task-form.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
 import { TasksService } from './tasks/tasks.service';
-import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -26,12 +27,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     TaskDetailComponent,
     TaskFormComponent,
     DropdownDirective,
-    TaskEditComponent
+    TaskEditComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [TasksService],
   bootstrap: [AppComponent]

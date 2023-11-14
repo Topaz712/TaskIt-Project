@@ -1,12 +1,15 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { Task } from './tasks.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
-  addTask = new EventEmitter<Task[]>();
+  addTask = new Subject<Task[]>();
+  tasksChanged = new Subject<Task[]>();
+  startedEditing = new Subject<number>();
 
   private tasks: Task[] = [
     new Task('Fix TaskIt', new Date(), 'High', 'Incomplete'),
@@ -19,9 +22,23 @@ export class TasksService {
     return this.tasks.slice();
   }
 
+  getTask(index: number) {
+    return this.tasks[index];
+  }
+
+  addTasks(task: Task) {
+    this.tasks.push(task);
+    this.tasksChanged.next(this.tasks.slice());
+  }
+
+  updateTask(index: number, newTask: Task) {
+    this.tasks[index] = newTask;
+    this.tasksChanged.next(this.tasks.slice());
+  }
+
   createTask(task: Task) {
     this.tasks.push(task);
-    this.addTask.emit(this.tasks.slice());
+    this.addTask.next(this.tasks.slice());
   }
 
   deleteTask(task: Task) {
