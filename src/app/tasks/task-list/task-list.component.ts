@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Task } from '../tasks.model';
 import { TasksService } from '../tasks.service';
 import { FormGroup } from '@angular/forms';
@@ -11,9 +11,11 @@ import { Subscription } from 'rxjs';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, OnDestroy {
   tasks: Task[];
+  id: number;
   private subscription: Subscription;
+
 
   constructor(
     private tasksService: TasksService,
@@ -22,21 +24,24 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit() {
     this.tasks = this.tasksService.getTasks();
-    // this.subscription = this.tasksService.tasksChanged
+    console.log(this.tasks);
+    this.subscription = this.tasksService.tasksChanged
 
-    this.tasksService.addTask
+    // this.tasksService.addTask
       .subscribe(
         (tasks: Task[]) => {
           this.tasks = tasks;
+          console.log('Updated tasks:', this.tasks);
         }
       );
-    // this.tasks = {
-    //   id: this.route.snapshot.params['id'],
-    //   title: this.route.snapshot.params['title'],
-    //   date: this.route.snapshot.params['date'],
-    //   priority: this.route.snapshot.params['priority'],
-    //   status: this.route.snapshot.params['status']
-    // }
+
+      this.route.params
+        .subscribe(
+          (params: Params) => {
+            this.id = +params['id'];
+            this.tasks = [this.tasksService.getTask(this.id)];
+          }
+        );
   }
 
   // onEdit() {
@@ -44,13 +49,16 @@ export class TaskListComponent implements OnInit {
   //     relativeTo: this.route, queryParamsHandling: 'preserve'
   //   });
   // }
-  onEditTask(index: number) {
-    this.tasksService.startedEditing.next(index);
+  onEditTask() {
+    this.router.navigate([':id/edit'], {relativeTo: this.route});
   }
 
-  onRemoveTask(taskId: number) {
-    this.tasksService.deleteTask;
-    this.router.navigate(['tasks']);
+  onDeleteTask() {
+    // this.tasksService.deleteTask(this.id);
+    this.router.navigate(['/tasks']);
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

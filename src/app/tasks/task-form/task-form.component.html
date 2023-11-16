@@ -9,22 +9,26 @@
           placeholder="Title">
         <input
           [(ngModel)]="date"
-          type="date" id="date" placeholder="Due Date">
+          type="date"
+          id="date"
+          placeholder="Due Date">
         <select
           [(ngModel)]="priority"
-          class="form-control" id="priority">
-          <option value="" selected disabled>Priority</option>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
+          class="form-control"
+          id="priority">
+            <option value="" selected disabled>Priority</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
         </select>
         <select
           [(ngModel)]="status"
-          class="form-control" id="status">
-          <option value="" selected disabled>Status</option>
-          <option value="To Do">To Do</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Status">Completed</option>
+          class="form-control"
+          id="status">
+            <option value="" selected disabled>Status</option>
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Status">Completed</option>
         </select>
         <button
           type="submit"

@@ -12,17 +12,17 @@
     </thead>
     <tbody>
       <tr *ngFor="let task of tasks">
-        <th>{{ task.title }}</th>
-        <th>{{ task.date | date: 'MM-dd-yyyy'}}</th>
-        <th>{{ task.priority }}</th>
-        <th
+        <td>{{ task.title }}</td>
+        <td>{{ task.date | date: 'MM-dd-yyyy'}}</td>
+        <td>{{ task.priority }}</td>
+        <td
           class="open">{{ task.status }}
           <span>
             <a>
               <img src="assets/icons/caret.svg">
             </a>
           </span>
-        </th>
+        </td>
         <th
           style="width: 89.8px;
           height: 17.8px;
@@ -41,12 +41,11 @@
             <a
               class="list-group-item"
               style="cursor: pointer"
-              *ngFor="let task of tasks; let i = index"
-              (click)="onEditTask(i)">
+              (click)="onEditTask()">
               <img src="assets/icons/edit.svg">
             </a>
           </li>
-          <li class="task-remove-icon" (click)="onRemoveTask(task.id)">
+          <li class="task-remove-icon" (click)="onDeleteTask(task.id)">
             <a href="">
               <img src="assets/icons/delete.svg">
             </a>

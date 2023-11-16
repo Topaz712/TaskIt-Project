@@ -2,42 +2,47 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <form (ngSubmit)="onUpdateTask(f)" #f="ngForm"
-        *ngFor="let task of task; let i = index;">
+        <form [formGroup]="taskForm" (ngSubmit)="onUpdateTask(taskForm)">
         <input
           type="text"
-          id="name"
+          id="title"
           class="form-control"
           name="title"
-          ngModel>
+          [(ngModel)]="task.title">
         <input
-          [(ngModel)]="date"
-          type="date" id="date" placeholder="Due Date">
+          type="date"
+          id="date"
+          placeholder="Due Date"
+          [(ngModel)]="task.date">
         <select
-          [(ngModel)]="priority"
-          class="form-control" id="priority">
-          <option value="" selected disabled>Priority</option>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
+          class="form-control"
+          id="priority"
+          name="priority"
+          [(ngModel)]="task.priority">
+            <option value="" selected disabled>Priority
+            </option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
         </select>
         <select
-          [(ngModel)]="status"
-          class="form-control" id="status">
-          <option value="" selected disabled>Status</option>
-          <option value="To Do">To Do</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Status">Completed</option>
+          class="form-control"
+          id="status"
+          name="status"
+          [(ngModel)]="task.status">
+            <option value="" selected disabled>Status</option>
+            <option value="To Do">To Do</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Status">Completed</option>
         </select>
         <button
           type="submit"
           class="btn btn-dark"
-          >Cancel
+          (click)="onCancel()">Cancel
         </button>
         <button
           type="submit"
-          class="btn btn-success"
-          (click)="onUpdateTask(f)">Update
+          class="btn btn-success">Update
         </button>
       </form>
       </div>
