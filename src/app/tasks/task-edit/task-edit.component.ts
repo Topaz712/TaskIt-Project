@@ -1,8 +1,11 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { Subject } from 'rxjs';
+
 import { TasksService } from '../tasks.service';
 import { Task } from '../tasks.model';
-import { Subscription } from 'rxjs';
-import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,13 +14,21 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./task-edit.component.css']
 })
 export class TaskEditComponent implements OnInit, OnDestroy {
-  @ViewChild('f') taskForm: NgForm;
+  // @ViewChild('f') taskForm: NgForm;
   @Input() task: Task;
   subscription: Subscription;
+  id: number;
   editMode = false;
   editedTaskIndex: number;
 
+  taskForm: FormGroup;
+
+  @Output() toggleModal: Subject<void> = new Subject<void>();
+
+  @Input() isModalVisible = false;
+
   constructor(
+    private route: ActivatedRoute,
     private tasksService: TasksService) { }
 
   ngOnInit() {
@@ -27,18 +38,43 @@ export class TaskEditComponent implements OnInit, OnDestroy {
           this.editedTaskIndex = index;
           this.editMode = true;
           this.task = this.tasksService.getTask(index);
-          this.taskForm.form.patchValue({
+
+          if(this.task) {
+          this.taskForm.patchValue({
             title: this.task.title,
             date: this.task.date,
             priority: this.task.priority,
             status: this.task.status
           });
         }
-      );
+      }
+    );
    }
 
-   onUpdateTask(form: NgForm) {
-    const value = form.value;
+   private initForm() {
+    let taskTitle = '';
+    let taskDate = null;
+    let taskPriority = '';
+    let taskStatus = '';
+
+    if(this.editMode) {
+      const task = this.tasksService.getTask(this.id);
+      taskTitle = this.task.title;
+      taskDate = this.task.date;
+      taskPriority = this.task.priority;
+      taskStatus = this.task.status;
+    }
+
+    this.taskForm = new FormGroup({
+      'title': new FormControl(taskTitle),
+      'date': new FormControl(taskDate),
+      'priority': new FormControl(taskPriority),
+      'status': new FormControl(taskStatus),
+    });
+   }
+
+   onUpdateTask() {
+    const value = this.taskForm.value;
     const newTask = new Task(value.title, value.date, value.priority, value.status);
 
     if (this.editMode) {
@@ -48,7 +84,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     }
 
     this.editMode = false;
-    form.reset();
+    this.taskForm.reset();
   }
 
   onCancel() {

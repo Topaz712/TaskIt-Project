@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasks">
+      <tr *ngFor="let task of tasks; let i = index">
         <td>{{ task.title }}</td>
         <td>{{ task.date | date: 'MM-dd-yyyy'}}</td>
         <td>{{ task.priority }}</td>
@@ -41,7 +41,8 @@
             <a
               class="list-group-item"
               style="cursor: pointer"
-              (click)="onEditTask()">
+              routerLink="['/tasks', i, 'edit']"
+              (click)="onEditTask(i)">
               <img src="assets/icons/edit.svg">
             </a>
           </li>
@@ -58,3 +59,4 @@
 </div>
 </div>
 
+<app-task-edit [isModalVisible]="showModal" (toggleModal)="onCancelModal()"></app-task-edit>

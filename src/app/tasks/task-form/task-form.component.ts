@@ -32,9 +32,17 @@ export class TaskFormComponent implements OnInit {
       status: this.status};
 
       this.tasksService.createTask(task);
+      // this.resetForm();
   }
 
   closeModal() {
     this.toggleModal.emit();
   }
+
+  // private resetForm() {
+  //   this.title = '';
+  //   this.date = null;
+  //   this.priority = '';
+  //   this.status = '';
+  // }
 }

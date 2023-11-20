@@ -1,24 +1,21 @@
-<div class="modal" tabindex="-1" role="dialog">
+<div class="modal" (toggleModal)="isModalVisible" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <form [formGroup]="taskForm" (ngSubmit)="onUpdateTask(taskForm)">
+        <form [formGroup]="taskForm" (ngSubmit)="onUpdateTask()">
         <input
           type="text"
           id="title"
-          class="form-control"
-          name="title"
-          [(ngModel)]="task.title">
+          formControlName="title"
+          class="form-control">
         <input
           type="date"
           id="date"
-          placeholder="Due Date"
-          [(ngModel)]="task.date">
+          formControlName="date">
         <select
           class="form-control"
           id="priority"
-          name="priority"
-          [(ngModel)]="task.priority">
+          formControlName="priority">
             <option value="" selected disabled>Priority
             </option>
             <option value="Low">Low</option>
@@ -28,8 +25,7 @@
         <select
           class="form-control"
           id="status"
-          name="status"
-          [(ngModel)]="task.status">
+          formControlName="status">
             <option value="" selected disabled>Status</option>
             <option value="To Do">To Do</option>
             <option value="In Progress">In Progress</option>

@@ -16,6 +16,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   id: number;
   private subscription: Subscription;
 
+  showModal: boolean = false;
 
   constructor(
     private tasksService: TasksService,
@@ -26,8 +27,6 @@ export class TaskListComponent implements OnInit, OnDestroy {
     this.tasks = this.tasksService.getTasks();
     console.log(this.tasks);
     this.subscription = this.tasksService.tasksChanged
-
-    // this.tasksService.addTask
       .subscribe(
         (tasks: Task[]) => {
           this.tasks = tasks;
@@ -38,8 +37,14 @@ export class TaskListComponent implements OnInit, OnDestroy {
       this.route.params
         .subscribe(
           (params: Params) => {
-            this.id = +params['id'];
-            this.tasks = [this.tasksService.getTask(this.id)];
+            const id = +params['id'];
+
+            if(!isNaN(id)) {
+              this.id = id;
+              this.showModal = true;
+            } else {
+            this.showModal = true;
+            }
           }
         );
   }
@@ -49,13 +54,18 @@ export class TaskListComponent implements OnInit, OnDestroy {
   //     relativeTo: this.route, queryParamsHandling: 'preserve'
   //   });
   // }
-  onEditTask() {
-    this.router.navigate([':id/edit'], {relativeTo: this.route});
+  onEditTask(index: number) {
+    this.tasksService.startedEditing.next(index);
+    // this.router.navigate([':id/edit'], {relativeTo: this.route});
   }
 
   onDeleteTask() {
     // this.tasksService.deleteTask(this.id);
     this.router.navigate(['/tasks']);
+  }
+
+  onCancelModal() {
+    this.showModal = false;
   }
 
   ngOnDestroy(): void {
