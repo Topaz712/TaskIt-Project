@@ -63,6 +63,20 @@ export class TaskListComponent implements OnInit, OnDestroy {
   onDeleteTask(id: number) {
     // this.tasksService.deleteTask(this.id);
     // this.router.navigate(['/tasks']);
+    this.tasksService.deleteTask(id);
+  }
+
+  onShowModal(task: Task) {
+    this.taskSelected = task;
+    this.showModal = true;
+  }
+
+  onConfirmDelete(id: number) {
+    if (this.taskSelected) {
+      this.tasksService.deleteTask(this.taskSelected.id);
+      this.showModal = false;
+      this.taskSelected = null;
+    }
   }
 
   onCancelModal() {

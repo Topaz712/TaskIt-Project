@@ -26,6 +26,7 @@ export class TaskFormComponent implements OnInit {
 
   onCreate() {
     const task: Task = {
+      id: this.tasksService.getTaskId(),
       title: this.title,
       date: new Date,
       priority: this.priority,

@@ -41,6 +41,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
           if(this.task) {
           this.taskForm.patchValue({
+            taskId: this.task.id,
             title: this.task.title,
             date: this.task.date,
             priority: this.task.priority,
@@ -52,6 +53,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
    }
 
    private initForm() {
+    let taskId = '';
     let taskTitle = '';
     let taskDate = null;
     let taskPriority = '';
@@ -75,7 +77,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
    onUpdateTask() {
     const value = this.taskForm.value;
-    const newTask = new Task(value.title, value.date, value.priority, value.status);
+    const newTask = new Task(value.id, value.title, value.date, value.priority, value.status);
 
     if (this.editMode) {
       this.tasksService.updateTask(this.editedTaskIndex, newTask)
