@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class TaskListComponent implements OnInit, OnDestroy {
   tasks: Task[];
   id: number;
+  taskSelected: Task;
   private subscription: Subscription;
 
   showModal: boolean = false;
@@ -59,12 +60,13 @@ export class TaskListComponent implements OnInit, OnDestroy {
     // this.router.navigate([':id/edit'], {relativeTo: this.route});
   }
 
-  onDeleteTask() {
+  onDeleteTask(id: number) {
     // this.tasksService.deleteTask(this.id);
-    this.router.navigate(['/tasks']);
+    // this.router.navigate(['/tasks']);
   }
 
   onCancelModal() {
+    this.taskSelected = null;
     this.showModal = false;
   }
 

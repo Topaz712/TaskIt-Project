@@ -46,8 +46,16 @@
               <img src="assets/icons/edit.svg">
             </a>
           </li>
-          <li class="task-remove-icon" (click)="onDeleteTask(task.id)">
-            <a href="">
+          <li>
+            <div class="modal" *ngIf="showModal && task.id === taskSelected?.id">
+              <div class="modal-content">
+                <button type="button">X</button>
+                <h2>Are you sure you want to delete task '{{taskSelected.title}}'?</h2>
+                <button type="button" class="btn btn-dark">Cancel</button>
+                <button type="button" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+            <a class="task-remove-icon" (click)="onDeleteTask(task.id)">
               <img src="assets/icons/delete.svg">
             </a>
           </li>
