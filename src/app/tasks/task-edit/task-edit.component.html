@@ -1,4 +1,4 @@
-<div class="modal" (toggleModal)="isModalVisible" tabindex="-1" role="dialog">
+<div class="modal" [class.show]="isModalVisible" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -32,7 +32,7 @@
             <option value="Status">Completed</option>
         </select>
         <button
-          type="submit"
+          type="button"
           class="btn btn-dark"
           (click)="onCancel()">Cancel
         </button>

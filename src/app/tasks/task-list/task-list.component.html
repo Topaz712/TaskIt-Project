@@ -52,7 +52,7 @@
               *ngIf="showModal && task.id === taskSelected?.id">
               <div class="modal-content">
                 <button
-                  type="button">X</button>
+                  type="button" (click)="onCancelModal()">X</button>
                 <h2>Are you sure you want to delete task '{{taskSelected.title}}'?</h2>
                 <button
                   type="button"
@@ -78,4 +78,4 @@
 </div>
 </div>
 
-<app-task-edit [isModalVisible]="showModal" (toggleModal)="onCancelModal()"></app-task-edit>
+<app-task-edit [isModalVisible]="showModal"></app-task-edit>

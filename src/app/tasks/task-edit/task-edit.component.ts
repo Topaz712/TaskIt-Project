@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Subject } from 'rxjs';
 
@@ -17,7 +17,6 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   // @ViewChild('f') taskForm: NgForm;
   @Input() task: Task;
   subscription: Subscription;
-  id: number;
   editMode = false;
   editedTaskIndex: number;
 
@@ -40,27 +39,19 @@ export class TaskEditComponent implements OnInit, OnDestroy {
           this.task = this.tasksService.getTask(index);
 
           if(this.task) {
-          this.taskForm.patchValue({
-            taskId: this.task.id,
-            title: this.task.title,
-            date: this.task.date,
-            priority: this.task.priority,
-            status: this.task.status
-          });
+          this.initForm();
         }
       }
     );
    }
 
    private initForm() {
-    let taskId = '';
     let taskTitle = '';
     let taskDate = null;
     let taskPriority = '';
     let taskStatus = '';
 
-    if(this.editMode) {
-      const task = this.tasksService.getTask(this.id);
+    if(this.editMode && this.task) {
       taskTitle = this.task.title;
       taskDate = this.task.date;
       taskPriority = this.task.priority;
@@ -68,16 +59,16 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     }
 
     this.taskForm = new FormGroup({
-      'title': new FormControl(taskTitle),
-      'date': new FormControl(taskDate),
-      'priority': new FormControl(taskPriority),
-      'status': new FormControl(taskStatus),
+      'title': new FormControl(taskTitle, Validators.required),
+      'date': new FormControl(taskDate, Validators.required),
+      'priority': new FormControl(taskPriority, Validators.required),
+      'status': new FormControl(taskStatus, Validators.required),
     });
    }
 
    onUpdateTask() {
     const value = this.taskForm.value;
-    const newTask = new Task(value.id, value.title, value.date, value.priority, value.status);
+    const newTask = new Task(null, value.title, value.date, value.priority, value.status);
 
     if (this.editMode) {
       this.tasksService.updateTask(this.editedTaskIndex, newTask)
