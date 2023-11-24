@@ -39,10 +39,13 @@ export class TaskEditComponent implements OnInit, OnDestroy {
           this.task = this.tasksService.getTask(index);
 
           if(this.task) {
-          this.initForm();
+            this.initForm();
         }
       }
     );
+    if (!this.taskForm) {
+      this.initForm();
+    }
    }
 
    private initForm() {
@@ -68,7 +71,13 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
    onUpdateTask() {
     const value = this.taskForm.value;
-    const newTask = new Task(null, value.title, value.date, value.priority, value.status);
+    const newTask = new Task(
+      this.editMode ? this.task.id : null,
+      value.title,
+      value.date,
+      value.priority,
+      value.status
+    );
 
     if (this.editMode) {
       this.tasksService.updateTask(this.editedTaskIndex, newTask)

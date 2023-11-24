@@ -57,18 +57,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   // }
   onEditTask(index: number) {
     this.tasksService.startedEditing.next(index);
-    this.showModal = true;
-    // this.router.navigate([':id/edit'], {relativeTo: this.route});
   }
-
-  // onDeleteTask(id: number) {
-  //   // this.tasksService.deleteTask(this.id);
-  //   // this.router.navigate(['/tasks']);
-  //   console.log("Deleting task with id:", id);
-  //   this.tasksService.deleteTask(id);
-  //   console.log("task deleted successfully");
-  //   console.log("updated tasks:", this.tasksService.getTasks());
-  // }
 
   onDeleteTask(id: number) {
     console.log("Deleting task with id:", id);
@@ -82,7 +71,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   onShowModal(task: Task) {
     this.taskSelected = task;
-    this.showModal = true;
+    // this.showModal = true;
   }
 
   onConfirmDelete(id: number) {
@@ -96,6 +85,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   onCancelModal() {
     this.taskSelected = null;
     this.showModal = false;
+    console.log("onCancelModal - showModal:", this.showModal, "taskSelected:", this.taskSelected);
   }
 
   ngOnDestroy(): void {
