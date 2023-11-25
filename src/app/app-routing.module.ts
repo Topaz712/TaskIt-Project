@@ -2,10 +2,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { TasksRoutingModule } from './tasks/tasks-routing.module';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/tasks', pathMatch: 'full' },
-  // { path: '', redirectTo: '/header', pathMatch: 'full' },
+  { path: '', component: LandingPageComponent},
   { path: 'header', component: HeaderComponent },
   // { path: '**', component: PageNotFoundComponent }
 ];
