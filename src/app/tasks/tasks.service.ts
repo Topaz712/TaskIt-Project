@@ -29,12 +29,7 @@ export class TasksService {
   getTaskId(): number {
     return this.tasks.length > 0 ? Math.max(...this.tasks.map(task => task.id)) + 1 : 1;
   }
-
-  addTasks(task: Task) {
-    this.tasks.push(task);
-    this.tasksChanged.next(this.tasks.slice());
-  }
-
+  
   updateTask(index: number, newTask: Task) {
     this.tasks[index] = newTask;
     this.tasksChanged.next(this.tasks.slice());
@@ -42,7 +37,7 @@ export class TasksService {
 
   createTask(task: Task) {
     this.tasks.push(task);
-    this.addTask.next(this.tasks.slice());
+    this.tasksChanged.next(this.tasks.slice());
   }
 
   // deleteTask(task: Task) {

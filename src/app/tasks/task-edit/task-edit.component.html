@@ -5,16 +5,15 @@
         <form [formGroup]="taskForm" (ngSubmit)="onUpdateTask()">
         <input
           type="text"
-          id="title"
           formControlName="title"
           class="form-control">
         <input
           type="date"
-          id="date"
-          formControlName="date">
+          formControlName="date"
+          class="form-control"
+          [value]="taskForm.get('date').value | date:'yyyy-MM-dd'">
         <select
           class="form-control"
-          id="priority"
           formControlName="priority">
             <option value="" selected disabled>Priority
             </option>
@@ -24,12 +23,11 @@
         </select>
         <select
           class="form-control"
-          id="status"
           formControlName="status">
             <option value="" selected disabled>Status</option>
             <option value="To Do">To Do</option>
             <option value="In Progress">In Progress</option>
-            <option value="Status">Completed</option>
+            <option value="Completed">Completed</option>
         </select>
         <button
           type="button"

@@ -55,7 +55,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
     if(this.editMode && this.task) {
       taskTitle = this.task.title;
-      taskDate = this.task.date;
+      taskDate = new Date(this.task.date);
       taskPriority = this.task.priority;
       taskStatus = this.task.status;
     }
@@ -81,7 +81,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
     if (this.editMode) {
       this.tasksService.updateTask(this.editedTaskIndex, newTask)
     } else {
-      this.tasksService.addTasks(newTask);
+      this.tasksService.createTask(newTask);
     }
 
     this.editMode = false;

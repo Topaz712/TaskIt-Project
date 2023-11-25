@@ -13,7 +13,7 @@ export class TaskFormComponent implements OnInit {
   @Input() isModalVisible = false;
 
   title = '';
-  date = Date;
+  date: Date = new Date();
   priority = '';
   status = '';
 
@@ -25,12 +25,19 @@ export class TaskFormComponent implements OnInit {
   }
 
   onCreate() {
+    console.log('onCreate called');
+    console.log('Title:', this.title);
+    console.log('Date:', this.date);
+    console.log('Priority:', this.priority);
+    console.log('Status:', this.status);
+
     const task: Task = {
       id: this.tasksService.getTaskId(),
       title: this.title,
-      date: new Date,
+      date: new Date(this.date),
       priority: this.priority,
-      status: this.status};
+      status: this.status
+    };
 
       this.tasksService.createTask(task);
       // this.resetForm();
