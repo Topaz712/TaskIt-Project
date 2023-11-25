@@ -51,6 +51,8 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   onEditTask(index: number) {
     this.tasksService.startedEditing.next(index);
+    const taskIndex = index + 1;
+    this.router.navigate(['/tasks', taskIndex, 'edit']);
     // this.showModal = true;
   }
 
@@ -58,15 +60,19 @@ export class TaskListComponent implements OnInit, OnDestroy {
     console.log("Deleting task with id:", id);
     console.log("Before deletion - showModal:", this.showModal, "taskSelected:", this.taskSelected);
 
-    this.tasksService.deleteTask(id);
+    // this.tasksService.deleteTask(id);
+    const taskToDelete = this.tasks.find(task => task.id === id);
+      if (taskToDelete) {
+        this.onShowModal(taskToDelete);
+      }
 
     console.log("After deletion - showModal:", this.showModal, "taskSelected:", this.taskSelected);
     console.log("Updated tasks:", this.tasksService.getTasks());
   }
 
   onShowModal(task: Task) {
-    this.taskSelected = task;
     this.showModal = true;
+    this.taskSelected = task;
   }
 
   onConfirmDelete(id: number) {

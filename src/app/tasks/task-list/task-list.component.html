@@ -12,6 +12,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let task of tasks; let i = index">
+        <td>{{ i + 1 }}</td>
         <td>{{ task.title }}</td>
         <td>{{ task.date | date: 'MM-dd-yyyy'}}</td>
         <td>{{ task.priority }}</td>
@@ -42,7 +43,7 @@
               class="list-group-item"
               style="cursor: pointer"
               role="button"
-              routerLink="/tasks-edit"
+              routerLink="/tasks{{ task.id }}/edit"
               (click)="onEditTask(i)">
               <img src="assets/icons/edit.svg">
             </a>
@@ -53,8 +54,12 @@
               *ngIf="showModal && task.id === taskSelected?.id">
               <div class="modal-content">
                 <button
-                  type="button" (click)="onCancelModal()">X</button>
-                <h2>Are you sure you want to delete task '{{taskSelected.title}}'?</h2>
+                  type="button"
+                  (click)="onCancelModal()">X
+                </button>
+                <h2>
+                  Are you sure you want to delete task '{{taskSelected.title}}'?
+                </h2>
                 <button
                   type="button"
                   class="btn btn-dark"

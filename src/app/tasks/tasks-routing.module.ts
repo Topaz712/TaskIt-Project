@@ -12,10 +12,11 @@ const routes: Routes = [
     path: 'tasks',
     component: TasksComponent,
     children: [
-      { path: 'new', component: TaskFormComponent },
-      { path: ':id', component: TaskListComponent },
-      { path: ':id/edit', component: TaskEditComponent},
+      // { path: '', redirectTo: 'new', pathMatch: 'full' },
+      { path: 'create', component: TaskFormComponent },
       { path: 'kanban', component: TaskDetailComponent},
+      { path: ':id', component: TaskListComponent },
+      { path: ':taskIndex/edit', component: TaskEditComponent},
     ]
   }
 ];

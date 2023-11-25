@@ -10,7 +10,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { TasksService } from './tasks/tasks.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { TasksRoutingModule } from './tasks/tasks-routing.module';
+import { TasksModule } from './tasks/tasks.module';
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import { TasksRoutingModule } from './tasks/tasks-routing.module';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    TasksRoutingModule
+    TasksModule
   ],
   providers: [TasksService],
   bootstrap: [AppComponent]
