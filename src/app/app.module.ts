@@ -11,6 +11,7 @@ import { TasksService } from './tasks/tasks.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { TasksModule } from './tasks/tasks.module';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { TasksModule } from './tasks/tasks.module';
     SidebarComponent,
     HeaderComponent,
     DropdownDirective,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

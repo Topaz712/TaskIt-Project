@@ -46,7 +46,14 @@ export class TaskListComponent implements OnInit, OnDestroy {
               // this.showModal = false;
             }
           }
-        );
+          );
+        }
+
+  onShowModal(task: Task) {
+    console.log('onShowModal - showModal:', this.showModal, 'taskSelected:', this.taskSelected);
+    this.showModal = true;
+    this.taskSelected = task;
+    console.log('onShowModal - showModal:', this.showModal, 'taskSelected:', this.taskSelected);
   }
 
   onEditTask(index: number) {
@@ -58,21 +65,14 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   onDeleteTask(id: number) {
     console.log("Deleting task with id:", id);
-    console.log("Before deletion - showModal:", this.showModal, "taskSelected:", this.taskSelected);
-
-    // this.tasksService.deleteTask(id);
     const taskToDelete = this.tasks.find(task => task.id === id);
-      if (taskToDelete) {
+
+    if (taskToDelete) {
         this.onShowModal(taskToDelete);
       }
 
-    console.log("After deletion - showModal:", this.showModal, "taskSelected:", this.taskSelected);
-    console.log("Updated tasks:", this.tasksService.getTasks());
-  }
+    // this.tasksService.deleteTask(id);
 
-  onShowModal(task: Task) {
-    this.showModal = true;
-    this.taskSelected = task;
   }
 
   onConfirmDelete(id: number) {
@@ -86,7 +86,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   onCancelModal() {
     this.taskSelected = null;
     this.showModal = false;
-    console.log("onCancelModal - showModal:", this.showModal, "taskSelected:", this.taskSelected);
+    console.log('onCancelModal - showModal:', this.showModal, 'taskSelected:', this.taskSelected);
   }
 
   ngOnDestroy(): void {
