@@ -22,8 +22,6 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
   taskForm: FormGroup;
 
-  @Output() toggleModal: Subject<void> = new Subject<void>();
-
   @Input() isModalVisible = false;
 
   constructor(
@@ -40,6 +38,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
           if(this.task) {
             this.initForm();
+            this.isModalVisible = true;
         }
       }
     );
@@ -90,7 +89,7 @@ export class TaskEditComponent implements OnInit, OnDestroy {
   }
 
   onCancel() {
-    this.editMode = false;
+    this.isModalVisible = false;
   }
 
   ngOnDestroy(): void {

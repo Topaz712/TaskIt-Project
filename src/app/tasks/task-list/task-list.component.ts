@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Task } from '../tasks.model';
 import { TasksService } from '../tasks.service';
-import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -42,21 +41,17 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
             if(!isNaN(id)) {
               this.id = id;
-              this.showModal = true;
+              // this.showModal = true;
             } else {
-            this.showModal = true;
+              // this.showModal = false;
             }
           }
         );
   }
 
-  // onEdit() {
-  //   this.router.navigate(['tasks',':id/edit'], {
-  //     relativeTo: this.route, queryParamsHandling: 'preserve'
-  //   });
-  // }
   onEditTask(index: number) {
     this.tasksService.startedEditing.next(index);
+    // this.showModal = true;
   }
 
   onDeleteTask(id: number) {
@@ -71,7 +66,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   onShowModal(task: Task) {
     this.taskSelected = task;
-    // this.showModal = true;
+    this.showModal = true;
   }
 
   onConfirmDelete(id: number) {

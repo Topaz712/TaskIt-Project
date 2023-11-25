@@ -33,15 +33,16 @@
           display: flex;
           justify-content: space-evenly;">
           <li>
-            <a href="">
+            <a>
               <img src="assets/icons/eye.svg/">
             </a>
           </li>
-          <li>
+          <li routerLinkActive="active">
             <a
               class="list-group-item"
               style="cursor: pointer"
-              routerLink="['/tasks', i, 'edit']"
+              role="button"
+              routerLink="/tasks-edit"
               (click)="onEditTask(i)">
               <img src="assets/icons/edit.svg">
             </a>
@@ -66,7 +67,11 @@
                 </button>
               </div>
             </div>
-            <a class="task-remove-icon" (click)="onDeleteTask(task.id)">
+            <a
+              class="task-remove-icon"
+              style="cursor: pointer"
+              role="button"
+              (click)="onDeleteTask(task.id)">
               <img src="assets/icons/delete.svg">
             </a>
           </li>
@@ -78,4 +83,4 @@
 </div>
 </div>
 
-<app-task-edit [isModalVisible]="showModal"></app-task-edit>
+<app-task-edit [class.show]="showModal"></app-task-edit>
