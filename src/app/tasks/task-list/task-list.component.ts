@@ -16,7 +16,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   taskSelected: Task;
   private subscription: Subscription;
 
-  showModal: boolean = false;
+  showModal: boolean = true;
 
   constructor(
     private tasksService: TasksService,
@@ -63,24 +63,28 @@ export class TaskListComponent implements OnInit, OnDestroy {
     // this.showModal = true;
   }
 
+  // onDeleteTask(id: number) {
+  //   console.log("Deleting task with id:", id);
+  //   const taskToDelete = this.tasks.find(task => task.id === id);
+
+  //   if (taskToDelete) {
+  //       this.onShowModal(taskToDelete);
+  //     }
+
+  //   // this.tasksService.deleteTask(id);
+
+  // }
+
+  // onConfirmDelete(id: number) {
+  //   if (this.taskSelected) {
+  //     this.tasksService.deleteTask(this.taskSelected.id);
+  //     this.showModal = false;
+  //     this.taskSelected = null;
+  //   }
+  // }
+
   onDeleteTask(id: number) {
-    console.log("Deleting task with id:", id);
-    const taskToDelete = this.tasks.find(task => task.id === id);
-
-    if (taskToDelete) {
-        this.onShowModal(taskToDelete);
-      }
-
-    // this.tasksService.deleteTask(id);
-
-  }
-
-  onConfirmDelete(id: number) {
-    if (this.taskSelected) {
-      this.tasksService.deleteTask(this.taskSelected.id);
-      this.showModal = false;
-      this.taskSelected = null;
-    }
+    this.tasksService.deleteTask(id);
   }
 
   onCancelModal() {

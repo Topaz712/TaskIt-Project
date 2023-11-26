@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import Swal from 'sweetalert2';
 
 import { Task } from './tasks.model';
 import { Subject } from 'rxjs';
@@ -29,7 +30,7 @@ export class TasksService {
   getTaskId(): number {
     return this.tasks.length > 0 ? Math.max(...this.tasks.map(task => task.id)) + 1 : 1;
   }
-  
+
   updateTask(index: number, newTask: Task) {
     this.tasks[index] = newTask;
     this.tasksChanged.next(this.tasks.slice());
@@ -40,15 +41,39 @@ export class TasksService {
     this.tasksChanged.next(this.tasks.slice());
   }
 
-  // deleteTask(task: Task) {
-  //   this.tasks.splice(0, 1);
-  // }
+
+//   oldDeleteTask(id: number) {
+//     const taskIndex = this.tasks.findIndex((task) => task.id === id);
+//     if (taskIndex !== -1) {
+//       this.tasks.splice(taskIndex, 1);
+//       this.tasksChanged.next(this.tasks.slice());
+//     }
+//   }
+// }
 
   deleteTask(id: number) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to undo this!",
+      icon: 'warning',
+      allowOutsideClick: false,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteAPITasks(id);
+
+        Swal.fire('Deleted!', 'Your task has been deleted.', 'success');
+      }
+    });
+  }
+  deleteAPITasks(id: number) {
     const taskIndex = this.tasks.findIndex((task) => task.id === id);
     if (taskIndex !== -1) {
       this.tasks.splice(taskIndex, 1);
       this.tasksChanged.next(this.tasks.slice());
-    }
   }
+}
 }
