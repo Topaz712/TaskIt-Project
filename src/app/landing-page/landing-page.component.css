@@ -4,3 +4,7 @@ h1 {
 .taskWord {
   color: #5cb85c;
 }
+
+p {
+  font-size: larger;
+}
