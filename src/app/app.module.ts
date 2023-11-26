@@ -6,13 +6,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
-import { DropdownDirective } from './shared/dropdown.directive';
 import { TasksService } from './tasks/tasks.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { TasksModule } from './tasks/tasks.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { AuthComponent } from './auth/auth.component';
+import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -20,16 +20,17 @@ import { AuthComponent } from './auth/auth.component';
     AppComponent,
     SidebarComponent,
     HeaderComponent,
-    DropdownDirective,
     LandingPageComponent,
-    AuthComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    TasksModule
+    TasksModule,
+    SharedModule,
+    AuthModule
+
   ],
   providers: [TasksService],
   bootstrap: [AppComponent]

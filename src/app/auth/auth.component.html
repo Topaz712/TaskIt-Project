@@ -1,19 +1,41 @@
 <div class="row">
   <div class="col-xs-12">
-    <form>
-      <h1>Welcome Back!</h1>
-      <p>Lets get to work.</p>
+    <form #authForm="ngForm" (ngSubmit)="onAuthSubmit(authForm)">
+      <h1
+        style="font-weight: bold;">Welcome Back!
+      </h1>
+      <p
+        style="font-size: larger;">Lets get to work.
+      </p>
       <div class="form-group">
         <label for="email">E-Mail</label>
-        <input type="email" id="email" class="form-control">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-control"
+          ngModel
+          required
+          email>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" class="form-control">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          ngModel
+          required
+          minlength="6">
       </div>
-      <p>Don't have an account?</p>
-      <a>Sign Up</a>
-      <button class="btn btn-success">Submit</button>
+      <div class="form-group d-flex justify-content-between">
+      <small id="emailHelp" class="form-text text-muted">Don't have an account?</small>
+       |
+      <a routerLinkActive="active" routerLink="/user" style="color: #5cb85c; cursor: pointer;">Sign Up</a>
+      <button type="submit" class="btn btn-success">Submit</button>
+      </div>
     </form>
+    <p class="alert alert-danger mt-3" *ngIf="errorMsg">{{ errorMsg }}</p>
   </div>
 </div>
