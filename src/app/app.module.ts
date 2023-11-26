@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { TasksModule } from './tasks/tasks.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     SidebarComponent,
     HeaderComponent,
     DropdownDirective,
-    LandingPageComponent
+    LandingPageComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
