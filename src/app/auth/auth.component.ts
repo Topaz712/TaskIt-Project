@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   selector: 'app-auth',
   templateUrl: './auth.component.html'
 })
-export class AuthComponent {
+export class AuthComponent implements OnDestroy{
   isLoginMode = true;
   errorMsg: string | null = null;
 
