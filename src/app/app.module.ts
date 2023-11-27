@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { TasksService } from './tasks/tasks.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,14 +14,14 @@ import { TasksModule } from './tasks/tasks.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
+import { KanbanBoardModule } from './kanban-board/kanban-board.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
     HeaderComponent,
-    LandingPageComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +31,8 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     TasksModule,
     SharedModule,
-    AuthModule
+    AuthModule,
+    KanbanBoardModule
 
   ],
   providers: [TasksService],

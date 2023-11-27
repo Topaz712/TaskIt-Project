@@ -9,7 +9,7 @@ const appRoutes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full'},
   { path: 'auth', component: AuthComponent },
   { path: 'header', component: HeaderComponent },
-
+  { path: 'kanban-board', loadChildren: () => import('./kanban-board/kanban-board.module').then(m => m.KanbanBoardModule) },
   // { path: '**', component: PageNotFoundComponent }
 ];
 

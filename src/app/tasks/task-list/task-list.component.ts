@@ -3,6 +3,7 @@ import { Task } from '../tasks.model';
 import { TasksService } from '../tasks.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { KanbanBoardComponent } from 'src/app/kanban-board/kanban-board.component';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class TaskListComponent implements OnInit, OnDestroy {
   constructor(
     private tasksService: TasksService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private kanbanBoard: KanbanBoardComponent) { }
 
   ngOnInit() {
     this.tasks = this.tasksService.getTasks();
@@ -61,6 +63,15 @@ export class TaskListComponent implements OnInit, OnDestroy {
     const taskIndex = index + 1;
     this.router.navigate(['/tasks', taskIndex, 'edit']);
     // this.showModal = true;
+  }
+
+  onTaskStatusChange(index: number) {
+    const currentTask = this.tasks[index];
+    const nextStatus = this.kanbanBoard.nextStatus(currentTask.status);
+
+    this.tasksService.updateTask(index, {
+      ...currentTask, status: nextStatus
+    });
   }
 
   // onDeleteTask(id: number) {
