@@ -1,5 +1,5 @@
-import { Component, OnDestroy, ViewChild } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { Component, OnDestroy } from "@angular/core";
+import { NgForm, AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 import { HttpErrorResponse } from '@angular/common/http'
 import { Observable, Subscription } from "rxjs";
 import { AuthResponseData, AuthService } from "./auth.service";
@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
-  templateUrl: './auth.component.html'
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnDestroy{
   isLoginMode = true;
@@ -49,6 +50,31 @@ export class AuthComponent implements OnDestroy{
         }
       }
     );
+  }
+  nameValidator(): ValidatorFn {
+    return (
+      control: AbstractControl): ValidationErrors | null => {
+      const valid = /^[a-zA-Z0-9]+$/.test(control.value);
+
+      return valid ? null : { invalidName: true };
+    };
+  }
+
+  strongPasswordValidator(): ValidatorFn {
+    return (
+      control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      const hasUppercase = /[A-Z]/.test(value);
+      const hasLowercase = /[a-z]/.test(value);
+      const hasNumber = /[0-9]/.test(value);
+      const hasSpecialCharacter = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+
+      const isValid =
+        hasUppercase && hasLowercase && hasNumber && hasSpecialCharacter;
+
+      return isValid ? null : { invalidPasswordStrength: true };
+    };
   }
 
   toggleAuthMode() {

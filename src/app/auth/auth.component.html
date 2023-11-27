@@ -67,6 +67,7 @@
           class="form-control"
           ngModel
           required
+          pattern="^[a-zA-Z0-9]+$"
           #fname="ngModel">
         <div
           *ngIf="fname.invalid && (fname.dirty || fname.touched)"
@@ -83,13 +84,18 @@
           ngModel
           required
           minlength="4"
+          pattern="^[a-zA-Z0-9]+$"
           #lname="ngModel">
       </div>
       <div
         *ngIf="lname.invalid && (lname.dirty || lname.touched)"
         class="text-danger">
-          <div *ngIf="lname.errors?.required">This field is required</div>
-          <div *ngIf="lname.errors?.minlength">Last Name must be at least 4 characters long</div>
+          <div
+            *ngIf="lname.errors?.required">This field is required
+          </div>
+          <div
+            *ngIf="lname.errors?.minlength">Last Name must be at least 4 characters long
+          </div>
       </div>
       <div class="form-group">
         <label for="email">E-Mail</label>
@@ -123,9 +129,17 @@
           minlength="6"
           #password="ngModel">
           <div
-            *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
-              <div *ngIf="password.errors?.required">This field is required</div>
-              <div *ngIf="password.errors?.minlength">Password must be at least 6 characters long</div>
+            *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="text-danger">
+              <div
+                *ngIf="password.errors?.required">This field is required
+              </div>
+              <div
+                *ngIf="password.errors?.minlength">Password must be at least 6 characters long
+              </div>
+              <div *ngIf="password.errors?.invalidPasswordStrength" class="text-danger">
+                Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character
+              </div>
           </div>
       </div>
       <div class="form-group d-flex justify-content-between" style="margin-left: 135px;">
