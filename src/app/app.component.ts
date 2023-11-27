@@ -8,7 +8,7 @@ import { User } from './auth/user.model';
 })
 export class AppComponent {
   user: User[] = [
-    new User('https://images.pexels.com/photos/15272229/pexels-photo-15272229/free-photo-of-black-and-white-photo-of-mountains-and-highway.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load', 'Topaz@taskit.com')
+    new User('Topaz@taskit.com', '12345', 'abcde', new Date())
     ];
 
 }

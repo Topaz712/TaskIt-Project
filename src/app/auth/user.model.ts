@@ -9,10 +9,14 @@ export class User {
     private _tokenExpirationDate: Date
     ) {}
 
-  get token() {
+  public get token() {
     if (!this._tokenExpirationDate || new Date() > this._tokenExpirationDate) {
       return null;
     }
     return this._token;
+  }
+
+  public get tokenExpirationDate() {
+    return this._tokenExpirationDate;
   }
 }
