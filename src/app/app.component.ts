@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from './auth/user.model';
+import { KanbanBoardModule } from './kanban-board/kanban-board.module';
 
 @Component({
   selector: 'app-root',

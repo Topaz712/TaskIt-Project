@@ -18,5 +18,6 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
+  exports: [SidebarComponent],
 })
 export class KanbanBoardModule { }
