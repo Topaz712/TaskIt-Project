@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { TasksService } from '../tasks.service';
 import { Task } from '../tasks.model';
+import { KanbanBoardComponent } from 'src/app/kanban-board/kanban-board.component';
 
 @Component({
   selector: 'app-task-form',
@@ -18,7 +19,8 @@ export class TaskFormComponent implements OnInit {
   status = '';
 
   constructor(
-    private tasksService: TasksService) { }
+    private tasksService: TasksService,
+    private kanbanBoard: KanbanBoardComponent) { }
 
   ngOnInit(): void {
 
@@ -36,10 +38,12 @@ export class TaskFormComponent implements OnInit {
       title: this.title,
       date: new Date(this.date),
       priority: this.priority,
-      status: this.status
+      status: this.kanbanBoard.nextStatus('To Do'),
     };
 
       this.tasksService.createTask(task);
+      
+      // this.toggleModal.emit();
       // this.resetForm();
   }
 

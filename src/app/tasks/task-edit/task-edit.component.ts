@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { TasksService } from '../tasks.service';
 import { Task } from '../tasks.model';
 import { ActivatedRoute } from '@angular/router';
+import { KanbanBoardComponent } from 'src/app/kanban-board/kanban-board.component';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class TaskEditComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private tasksService: TasksService) { }
+    private tasksService: TasksService,
+    private kanbanBoard: KanbanBoardComponent) { }
 
   ngOnInit() {
     this.subscription = this.tasksService.startedEditing
