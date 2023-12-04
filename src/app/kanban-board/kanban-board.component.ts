@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../tasks/tasks.model';
 import { TasksService } from '../tasks/tasks.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-kanban-board',

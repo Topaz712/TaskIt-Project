@@ -3,3 +3,13 @@
   padding: 0
 }
 
+.task-cols {
+  background-color: #ffffffab;
+}
+
+.task-card {
+  margin: 5px;
+  background-color: rgb(255, 253, 253);
+  border: #6c61611f solid 2px;
+  border-radius: 5px;
+}
