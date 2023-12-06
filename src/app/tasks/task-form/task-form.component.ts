@@ -38,11 +38,11 @@ export class TaskFormComponent implements OnInit {
       title: this.title,
       date: new Date(this.date),
       priority: this.priority,
-      status: this.kanbanBoard.nextStatus('To Do'),
+      status: 'To Do',
     };
 
       this.tasksService.createTask(task);
-      
+
       // this.toggleModal.emit();
       // this.resetForm();
   }

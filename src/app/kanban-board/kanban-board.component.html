@@ -10,26 +10,30 @@
     <h1
       style="font-weight: bold;">KanBan
     </h1>
-    <div class="container task-box col-md-12 col-sm-12" style="background-color: rgb(212, 203, 203);" *ngFor="let task of tasks">
+    <div class="container task-box col-md-12 col-sm-12" style="background-color: rgb(212, 203, 203);">
       <div class="row" style="display: flex; justify-content: space-evenly;">
         <div class="task-cols col-md-4 col-sm-4" style="margin-right: auto;">
-          <h3 style="background-color: bisque;">To Do</h3>
-          <div class="task-card">
-            {{ task.title }}
-            <p>Priority: {{ task.status }}</p>
+          <h4 style="background-color: bisque;">To Do</h4>
+          <div class="task-card" *ngFor="let task of toDoTasks">
+            <p style="font-weight: 500;">{{ task.title }}
+              <span style="margin-left: 20px;">
+                {{ task.status }}
+              </span>
+            </p>
+            <p>Priority: {{ task.priority }}</p>
             <p>Due Date: {{ task.date | date: 'MMMM d' }}</p>
 
           </div>
         </div>
         <div class="task-cols col-md-4 col-sm-4" style="margin-right: auto;">
           <h3>In Progress</h3>
-          <div class="task-card">
+          <div class="task-card" *ngFor="let task of inProgressTasks">
             {{ tasks }}
           </div>
         </div>
         <div class="task-cols col-md-4 col-sm-4">
           <h3>Done</h3>
-          <div class="task-card">
+          <div class="task-card" *ngfor="let taskk of completedTasks">
             {{ tasks }}
           </div>
         </div>

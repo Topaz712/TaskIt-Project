@@ -9,13 +9,24 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./kanban-board.component.css']
 })
 export class KanbanBoardComponent implements OnInit {
-  tasks: Task[];
+  toDoTasks: Task[] = [];
+  inProgressTasks: Task[] = [];
+  completedTasks: Task[] = [];
 
   constructor(private tasksService: TasksService) { }
 
   ngOnInit() {
     this.tasks = this.tasksService.getTasks();
     console.log('Kanban works!');
+    this.tasks.forEach(task => {
+      if (task.status === 'To Do') {
+        this.toDoTasks.push(task);
+      } else if (task.status === 'In Progress') {
+        this.inProgressTasks.push(task);
+      } else if (task.status === 'Completed') {
+        this.completedTasks.push(task);
+      }
+    });
   }
 
   onTaskStatusChange(index: number, newStatus: string) {
